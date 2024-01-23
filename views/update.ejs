@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Todo</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+<script src="/css/bootstrap/js/bootstrap.bundle.min.js" ></script>
+<script src="/js/jquery.min.js"></script>
+</head>
+<body onload="ShowModal()">
+  
+    <div class="header">
+        <h1>TODO Application</h1>
+        <hr class="hr1"/>
+        <p class="p-tag">Edit Page</p>
+        <hr class="hr2"/>
+        <div class="action1"></div>
+      </div>
+
+<!-- Test -->
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Todo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="HideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="Update">
+          <form method="post" action="/update/<%= locals.todo.title %>" class="form">
+            <label for="Description">Description</label>
+            <input type="text" placeholder="Todo Description" name="Description" value="<%= locals.todo.Description %>"/>
+            <br>
+            <br>
+            <label for="isDone">is Done Status</label>
+
+            <input
+              type="checkbox"
+              name="isDone"
+              <% if(locals.todo.isDone) {%>checked<%} %>
+              id=""
+              placeholder="Is Done"
+            />
+         
+            <!-- SubMit -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="HideModal()">Close</button>
+              <input type="submit"  class="btn btn-primary" value="Update Todo"/>
+             
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  function ShowModal()
+  {
+    $('#exampleModalCenter').modal({ backdrop: 'static', keyboard: false });
+    $('#exampleModalCenter').modal('show')
+    
+  }
+  function HideModal()
+  {
+    $('#exampleModalCenter').modal('hide')
+  document.location.href='/'
+  }
+
+ 
+	
+</script>
+</body>
+</html>
